@@ -1,11 +1,22 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { api } from '../../styles/api';
 
 import { Container } from './styles';
 
+type TransactionsProps = {
+    id: number
+    title: string
+    amount: number
+    type: string
+    category: string
+    createdAt: string
+}
+
 const TransactionsTable: React.FC = () => {
+    const [transactions, setTransactions] = useState<TransactionsProps[]>([])
+
     useEffect(() => {
-        api.get('transactions').then(response => response.data)
+        api.get('transactions').then(response => setTransactions(response.data.transactions))
     }, [])
 
   return (
@@ -20,18 +31,22 @@ const TransactionsTable: React.FC = () => {
                 </tr>
             </thead>
             <tbody>
-            <tr>
-                    <td>Desenvolvimento de website</td>
-                    <td>R$12.000</td>
-                    <td>Desenvolvimento</td>
-                    <td>20/02/2021</td>
-            </tr>
-            <tr>
-                    <td>Desenvolvimento de website</td>
-                    <td>R$12.000</td>
-                    <td>Desenvolvimento</td>
-                    <td>20/02/2021</td>
-            </tr>
+                {transactions.map(transaction => (
+                    <tr key={transaction.type}>
+                        <td>{transaction.title}</td>
+                        <td className={transaction.type} >{
+                            new Intl.NumberFormat('pt-BR', {
+                               style: 'currency',
+                               currency: 'BRL',
+                           }).format(transaction.amount)}
+                        </td>
+                        <td>{transaction.type}</td>
+                        <td>{
+                            new Intl.DateTimeFormat('pt-BR', {
+                            }).format(new Date(transaction.createdAt))}
+                        </td>
+                    </tr>
+                ))}
             </tbody>
         </table>
     </Container>
