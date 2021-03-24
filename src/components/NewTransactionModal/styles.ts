@@ -6,7 +6,7 @@ type RadioBoxProps = {
     activeColor: 'green' | 'red'
 }
 
-export const Container = styled.div`
+export const Container = styled.form`
   h2 {
     color: var(--text-white);
     font-size: 1.5rem;

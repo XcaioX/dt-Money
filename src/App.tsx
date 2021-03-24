@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import { Header } from './components/Header';
 import { NewTransactionModal } from './components/NewTransactionModal';
+import { TransactionsProvider } from './hooks/useTransactions';
 import { Dashboard } from './pages/dashboard';
 import { Global } from './styles/global';
 
@@ -19,9 +20,19 @@ export function App() {
   return (
     <React.Fragment>
       <Global />
-      <Header onOpenNewTransactionModal={handleOpenNewTransactionModal} />
-      <Dashboard />
-      <NewTransactionModal isOpen={isNewTransactionModalOpen} onRequestClose={handleCloseNewTransactionModal} />
+      <TransactionsProvider>
+
+        <Header 
+          onOpenNewTransactionModal={handleOpenNewTransactionModal} 
+        />
+
+        <Dashboard />
+
+        <NewTransactionModal
+          isOpen={isNewTransactionModalOpen} 
+          onRequestClose={handleCloseNewTransactionModal} 
+        />
+      </TransactionsProvider>
     </React.Fragment>
   );
 }
