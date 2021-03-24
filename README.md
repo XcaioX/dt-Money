@@ -1,8 +1,8 @@
 # DT-Money
 
-Project made by following the Ignite bootcamp provided by Rocketseat
-Another version of the same project but made with NextJs 
--> [Go-Finances](https://github.com/XcaioX/Go-Finances)
+<p>Project made by following the Ignite bootcamp provided by Rocketseat</p>
+<p>Another version of the same project but made with NextJs
+-> [Go-Finances](https://github.com/XcaioX/Go-Finances)</p>
 <hr/>
 
 ## Showcase
