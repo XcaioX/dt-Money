@@ -12,4 +12,4 @@
 <img align="center"  src="assets/homepage.png" />
 
 ##### Modal
-<img align="center" src="assets/homepage.png" />
+<img align="center" src="assets/modal.png" />
